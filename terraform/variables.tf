@@ -56,7 +56,7 @@ variable "instance_type" {
 variable "key_name" {
   description = "EC2 keypair"
   type        = string
-  default     = "gitopskey"
+  default     = "aws-kubernetes-key"
 }
 
 variable "instance_name" {

@@ -13,7 +13,7 @@ on:
         - terraform/**
 
     workflow_dispatch:
-      
+
 env:
     # credentials for deployment to AWS
     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -59,12 +59,8 @@ jobs:
           if: steps.plan.outcome == 'failure'
           run: exit 1
 
-        # - name: Terraform Apply
-        #   id: apply
-        #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        #   run: terraform apply -auto-approve -input=false -parallelism=1 planfile
-
-
-
-
+        - name: Terraform Apply
+          id: apply
+          if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+          run: terraform apply -auto-approve -input=false -parallelism=1 planfile
         
